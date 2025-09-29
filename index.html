@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Timer with Statistics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pomodoro Timer</h1>
+    <div class="timer-container">
+      <div id="progress-circle" class="progress-circle">
+        <svg width="200" height="200" viewBox="0 0 120 120">
+          <circle class="circle-bg" cx="60" cy="60" r="54" />
+          <circle class="circle-progress" cx="60" cy="60" r="54" />
+        </svg>
+        <div id="time-display" class="time-display">25:00</div>
+      </div>
+      <div class="mode-buttons">
+        <button id="work-btn" class="mode-btn active" aria-label="Work Mode">Work</button>
+        <button id="short-break-btn" class="mode-btn" aria-label="Short Break Mode">Short Break</button>
+        <button id="long-break-btn" class="mode-btn" aria-label="Long Break Mode">Long Break</button>
+      </div>
+      <div class="customize">
+        <label>
+          Work (minutes):
+          <input type="number" id="work-duration" min="1" max="60" value="25" />
+        </label>
+        <label>
+          Short Break (minutes):
+          <input type="number" id="short-break-duration" min="1" max="30" value="5" />
+        </label>
+        <label>
+          Long Break (minutes):
+          <input type="number" id="long-break-duration" min="1" max="60" value="15" />
+        </label>
+      </div>
+      <div class="controls">
+        <button id="start-btn" aria-label="Start Timer">Start</button>
+        <button id="pause-btn" aria-label="Pause Timer" disabled>Pause</button>
+        <button id="reset-btn" aria-label="Reset Timer">Reset</button>
+      </div>
+    </div>
+
+    <section class="stats-section">
+      <h2>Session History & Statistics</h2>
+      <div id="stats-message">No sessions yet. Start a timer!</div>
+      <ul id="session-history" class="session-history"></ul>
+      <canvas id="daily-chart" aria-label="Daily Productivity Chart" role="img"></canvas>
+      <canvas id="weekly-chart" aria-label="Weekly Productivity Chart" role="img"></canvas>
+    </section>
+  </div>
+
+  <audio id="alarm-audio" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" preload="auto"></audio>
+  
+  <script src="script.js"></script>
+</body>
+</html>
